@@ -72,7 +72,7 @@ app.get('/logout', function(req, res) {
 app.get('/editScoring', function(req, res) {
     
     // Note: current user not set if not logged in. 
-    if (Parse.User.current()) {
+    if (request.user) {
     
         var query = new Parse.Query("AdminSettings");
         query.first().then( function(settingsObj) {    
@@ -104,7 +104,7 @@ app.get('/editScoring', function(req, res) {
 app.post('/saveScoring', function(req, res) {
     
     // Note: current user not set if not logged in. 
-    if (Parse.User.current()) {
+    if (request.user) {
     
         var query = new Parse.Query("AdminSettings");
         query.first().then( function(settingsObj) {    
@@ -146,7 +146,7 @@ app.post('/saveScoring', function(req, res) {
 app.get('/howmany', function(req, res) {
 
   // Note: current user not set if not logged in. 
-    if (Parse.User.current()) {
+    if (request.user) {
 
         query = new Parse.Query("Question");
         query.count().then(function(count) {
